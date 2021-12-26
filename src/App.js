@@ -1,4 +1,4 @@
-
+import runQuery from './services/cryptoApi';
 import React from 'react';
 import {BrowserRouter, Route, Link, Routes} from 'react-router-dom';
 import { Layout, Typography, Space} from 'antd';
@@ -6,7 +6,7 @@ import { Layout, Typography, Space} from 'antd';
 import { Navbar, Exchanges, Homepage, Cryptocurrencies, News, CryptoDetails } from './components';
 import './App.css';
 import 'antd/dist/antd.css';
-const App =() => {
+const App = () => {
     return (
         <div className="app">
             <div className="navbar">
@@ -25,10 +25,8 @@ const App =() => {
                             
                             <Route exact path="/cryptocurrencies" element={<Cryptocurrencies />}/>
                             
-
                             <Route exact path="/crypto/:coinId" element={<CryptoDetails />}/>
                             
-
                             <Route exact path="/news" element={<News />}/>
                             
                         </Routes>
@@ -38,8 +36,8 @@ const App =() => {
             
                 <div className="footer" style={{margin:"0px"}}>
                     <div>
-                        <h1 className="footerElement">Cryptoverse</h1>
-                        <h1 className="footerElement">All rights reserved</h1>
+                        <h3 className="footerElement">Cryptoverse</h3>
+                        <h3 className="footerElement">All rights reserved</h3>
                     </div>
 
                     {/*space tag puts spaces between the below tags */}
