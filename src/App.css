@@ -43,3 +43,21 @@ a:hover{
     margin: 0px;
     background-color: rgb(0, 21, 41);
 }
+
+.footer {
+    background-color: #001529;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-items: center;
+}
+/*
+<h1 style={{color:'white', textAlign: 'center', maxHeight:"100px", margin:"0px"}}>Cryptoverse</h1>
+*/
+.footerElement {
+    color:white; 
+    text-align: center; 
+    max-height:100px; 
+    margin: 0px;
+    
+}

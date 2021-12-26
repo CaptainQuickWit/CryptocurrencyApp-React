@@ -5,6 +5,7 @@ import { Layout, Typography, Space} from 'antd';
 //import Navbar from './components/Navbar';
 import { Navbar, Exchanges, Homepage, Cryptocurrencies, News, CryptoDetails } from './components';
 import './App.css';
+import 'antd/dist/antd.css';
 const App =() => {
     return (
         <div className="app">
@@ -19,7 +20,6 @@ const App =() => {
                             {/* home page path */}
                             <Route exact path="/" element={<Homepage />} />
                             
-
                             {/*path to the exchange */}
                             <Route exact path="/exchanges" element={<Exchanges />} />
                             
@@ -35,11 +35,21 @@ const App =() => {
                     
                     </div>
                 </Layout>
-            </div>
-            <div className="footer">
-
-            </div>
             
+                <div className="footer" style={{margin:"0px"}}>
+                    <div>
+                        <h1 className="footerElement">Cryptoverse</h1>
+                        <h1 className="footerElement">All rights reserved</h1>
+                    </div>
+
+                    {/*space tag puts spaces between the below tags */}
+                    <Space>
+                        <Link to="/">Home</Link>
+                        <Link to="/exchanges">Exchanges</Link>
+                        <Link to="/news">News</Link>
+                    </Space>
+                </div> {/* footer div closing tag */}
+            </div> {/* main div closing tag */}
         </div>
     )
 }
