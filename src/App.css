@@ -6,7 +6,9 @@
    --light-blue: #e6f7ff;
    --border: #d9d9d9;
 }
-
+.border {
+    border:2px solid red;
+}
 * {
     margin: 0;
     padding: 0;
@@ -44,6 +46,16 @@ a:hover{
     background-color: rgb(0, 21, 41);
 }
 
+.crypto-card-container{
+    min-height: 65vh !important;
+}
+.crypto-card{
+    min-width: 250px;
+}
+.crypto-card .crypto-image{
+    width:35px;
+}
+
 .footer {
     background-color: #001529;
     display: flex;
@@ -51,9 +63,7 @@ a:hover{
     padding: 5px;
     align-items: center;
 }
-/*
-<h1 style={{color:'white', textAlign: 'center', maxHeight:"100px", margin:"0px"}}>Cryptoverse</h1>
-*/
+
 .footerElement {
     color:white; 
     text-align: center; 

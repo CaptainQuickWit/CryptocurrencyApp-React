@@ -4,18 +4,14 @@ import { Typography, Row, Col, Statistic} from 'antd';
 import { Link } from 'react-router-dom';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 const { Title } = Typography;
-
+import { Cryptocurrencies, News} from '../components';
 const Homepage = () => {
     
-    
     const {data, loading, error, isFetching} = useGetCryptosQuery();
-    //console.log("data:"+ JSON.stringify(data));
     const globalStats = data?.data?.stats;
-    //globalStats = JSON.stringify(globalStats);
-    //console.log("DATA: "+globalStats);
 
     if (isFetching) return 'Loading ...';
-    
+
     /**
      * If globalStates has a value it will render the values else render message to user that the data could not be retrieived. 
      */
@@ -30,7 +26,20 @@ const Homepage = () => {
                     <Col span={12}><Statistic title="Total Market Cap" value={millify(globalStats.totalMarketCap)}/></Col>
                     <Col span={12}><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
                     <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Col>
-                </Row> 
+                </Row>
+                <div className="home-heading-container">
+                    <Title level={2} className="home-title">Top 10 Cryptocurrencies globaly</Title>
+                    <Title level={3} className="show-more"><Link to="/cryptocurrencies">Show More</Link></Title>
+                </div>
+                 <Cryptocurrencies simplified/> 
+
+                <div className="home-heading-container">
+                    <Title level={2} className="home-title">Latest Crypto News</Title>
+                    <Title level={3} className="show-more"><Link to="/news">Show More</Link></Title>
+                </div>
+                
+                 <News simplified />
+
             </div>
         )
     } else {
