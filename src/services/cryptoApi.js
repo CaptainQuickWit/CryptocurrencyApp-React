@@ -8,12 +8,7 @@ const cryptoApiHeaders = {
 const baseUrl = process.env.REACT_APP_CRYPTO_API_URL;
 const createRequest = (url) => ({url, headers: cryptoApiHeaders});
 
-/*
-const storedData = JSON.parse(localStorage.getItem("data"));
-  if (storedData !== null) {
-    //logic here
-  }
-*/
+
 export const cryptoApi = createApi({
   
   reducerPath: 'cryptoApi',
@@ -21,7 +16,7 @@ export const cryptoApi = createApi({
   endpoints: (builder) => ({
     getCryptos: builder.query({
       
-      query: ( ) => createRequest('/coins')
+      query: (count) => createRequest(`/coins?limit=${count}`),
     })
   })
 });

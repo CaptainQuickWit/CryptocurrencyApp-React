@@ -7,9 +7,10 @@ const { Title } = Typography;
 import { Cryptocurrencies, News} from '../components';
 const Homepage = () => {
     
-    const {data, loading, error, isFetching} = useGetCryptosQuery();
+    const query10Coins = 10;
+    const {data, loading, error, isFetching} = useGetCryptosQuery(query10Coins);
     const globalStats = data?.data?.stats;
-
+    
     if (isFetching) return 'Loading ...';
 
     /**
