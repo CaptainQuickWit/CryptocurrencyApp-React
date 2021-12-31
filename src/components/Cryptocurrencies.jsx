@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
@@ -9,8 +8,23 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
-  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
-  console.log("CRYPTOLIST:"+JSON.stringify(cryptosList));
+  
+
+  //production code
+  //const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
+  
+  /*
+  limited api calls development code
+   */
+  const isFetching = false;
+  var cryptosList;
+  var globalStats; 
+  if (localStorage.getItem('cryptoCoins')) {
+      cryptosList = JSON.parse(localStorage.getItem('cryptoCoins'));
+      
+  } else {
+      console.log("No local storage for cryptoCoins");
+  }
   
   const [cryptos, setCryptos] = useState();
   const [searchTerm, setSearchTerm] = useState('');
