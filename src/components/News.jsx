@@ -22,29 +22,32 @@ const { Text, Title } = Typography;
 const { Option } = Select;
 
 const News = ({ simplified }) => {
-  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
+  //const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data } = useGetCryptosQuery(100);
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+  //const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+  //localStorage.setItem("cryptoNews", JSON.stringify(cryptoNews));
+  
+  /*
+  Due to limited API calls I will be pulling data from localstorage for developmental purposes. 
+   */
+  var cryptoNews;
+  var globalStats; 
+  if (localStorage.getItem('cryptoNews')) {
+    cryptoNews = JSON.parse(localStorage.getItem('cryptoNews'));
+    if (cryptoNews) {
+       console.log("cryptonews:"+JSON.stringify(cryptoNews));
+        } else {
+           console.log("error getting data");
+                      }
+        } else {
+            console.log("No local storage for cryptoNews");
+        }
 
   if (!cryptoNews?.value) return 'Loading...';
 
   return (
     <Row gutter={[24, 24]}>
-      {!simplified && (
-        <Col span={24}>
-          <Select
-            showSearch
-            className="select-news"
-            placeholder="Select a Crypto"
-            optionFilterProp="children"
-            onChange={(value) => setNewsCategory(value)}
-            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-          >
-            <Option value="Cryptocurency">Cryptocurrency</Option>
-            {data?.data?.coins?.map((currency) => <Option value={currency.name}>{currency.name}</Option>)}
-          </Select>
-        </Col>
-      )}
+
       {cryptoNews.value.map((news, i) => (
         <Col xs={24} sm={12} lg={8} key={i}>
           <Card hoverable className="news-card">
