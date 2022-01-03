@@ -13,25 +13,25 @@ import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
-import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
+import { useGetCryptoNewsQuery, useGetCryptosNewQueryStorage } from '../services/cryptoNewsApi';
 //import Loader from './Loader';
-
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
-
 const { Text, Title } = Typography;
 const { Option } = Select;
 
 const News = ({ simplified }) => {
-  //const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
+
+
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data } = useGetCryptosQuery(100);
-  //const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+  
+  //var { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
   //localStorage.setItem("cryptoNews", JSON.stringify(cryptoNews));
   
   /*
   Due to limited API calls I will be pulling data from localstorage for developmental purposes. 
    */
   var cryptoNews;
-  var globalStats; 
   if (localStorage.getItem('cryptoNews')) {
     cryptoNews = JSON.parse(localStorage.getItem('cryptoNews'));
     if (cryptoNews) {
@@ -42,10 +42,46 @@ const News = ({ simplified }) => {
         } else {
             console.log("No local storage for cryptoNews");
         }
-
+        
   if (!cryptoNews?.value) return 'Loading...';
 
   return (
+    <Row gutter={[24, 24]}>
+      {cryptoNews.value.map((news,i) => (
+        <Col xs={24} sm={12} lg={8} key={i}>
+        <Card hoverable className="news-card">
+          <div className="news-image-container">
+            <a href={news.url} target="_blank" rel="noreferrer">
+              <Title className="news-title" level={4}>{news.name}</Title>
+              <img src={news?.image?.thumbnail?.contentUrl || demoImage} />
+            </a>
+          </div>
+          <p>
+            {news.description > 100
+              ? `${news.description.substring(0,100)}...`
+              : news.description}
+          </p>
+          
+          <div className="provider-container">
+            <div>
+              <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news"/>
+              <Text className = "provider-name">{news.provider[0]?.name}</Text>
+            </div>
+            <Text>{moment(news.datePublished).startOf('ss').fromNow()} </Text>
+          </div>
+
+        </Card>
+      </Col>
+      ))}
+      
+    </Row>
+  );
+};
+
+export default News;
+
+/*
+return (
     <Row gutter={[24, 24]}>
 
       {cryptoNews.value.map((news, i) => (
@@ -70,6 +106,4 @@ const News = ({ simplified }) => {
       ))}
     </Row>
   );
-};
-
-export default News;
+*/

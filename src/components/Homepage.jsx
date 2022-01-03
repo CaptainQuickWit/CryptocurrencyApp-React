@@ -11,6 +11,7 @@ const Homepage = () => {
     /*
         Due to limited API fetch's will be stored for developmental purposes. 
      */
+    /*
     var data;
     var globalStats; 
     if (localStorage.getItem('cryptoCoins')) {
@@ -18,12 +19,20 @@ const Homepage = () => {
         globalStats = data?.data?.stats;
     } else {
         console.log("No local storage for cryptoNews");
-    }
-    /* Production cdoe
+    }*/
+    /* Production code*/
+
     const query10Coins = 10;
     const {data, loading, error, isFetching} = useGetCryptosQuery(query10Coins);
+    
     const globalStats = data?.data?.stats;
-    if (isFetching) return 'Loading ...';*/
+    if (isFetching) return 'Loading ...';
+
+    if (!data) localStorage.setItem("cryptoCoins",JSON.parse(data));
+
+    //var data;
+    //var globalStats;
+    //localStorage.setItem("cryptoCoins",JSON.parse(data));
 
     /**
      * If globalStates has a value it will render the values else render message to user that the data could not be retrieived

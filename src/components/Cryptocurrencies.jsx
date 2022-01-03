@@ -11,11 +11,12 @@ const Cryptocurrencies = ({ simplified }) => {
   
 
   //production code
-  //const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
+  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   
   /*
   limited api calls development code
    */
+  /*
   const isFetching = false;
   var cryptosList;
   var globalStats; 
@@ -24,7 +25,7 @@ const Cryptocurrencies = ({ simplified }) => {
       
   } else {
       console.log("No local storage for cryptoCoins");
-  }
+  }*/
   
   const [cryptos, setCryptos] = useState();
   const [searchTerm, setSearchTerm] = useState('');
