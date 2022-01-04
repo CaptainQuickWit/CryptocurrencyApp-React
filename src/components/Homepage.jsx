@@ -24,7 +24,6 @@ const Homepage = () => {
 
     const query10Coins = 10;
     const {data, loading, error, isFetching} = useGetCryptosQuery(query10Coins);
-    
     const globalStats = data?.data?.stats;
     if (isFetching) return 'Loading ...';
 

@@ -36,7 +36,7 @@ const App = () => {
             
                 <div className="footer" style={{margin:"0px"}}>
                     <div>
-                        <h3 className="footerElement">Cryptoverse</h3>
+                        <h3 className="footerElement">CryptoDashboard</h3>
                         <h3 className="footerElement">All rights reserved</h3>
                     </div>
 
