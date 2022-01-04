@@ -1,32 +1,14 @@
-
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
+import Loader from './Loader';
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
-  
-
-  //production code
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
-  
-  /*
-  limited api calls development code
-   */
-  /*
-  const isFetching = false;
-  var cryptosList;
-  var globalStats; 
-  if (localStorage.getItem('cryptoCoins')) {
-      cryptosList = JSON.parse(localStorage.getItem('cryptoCoins'));
-      
-  } else {
-      console.log("No local storage for cryptoCoins");
-  }*/
-  
   const [cryptos, setCryptos] = useState();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -38,7 +20,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCryptos(filteredData);
   }, [cryptosList, searchTerm]);
 
-  if (isFetching) return "loading";
+  if (isFetching) return <Loader />;
 
   return (
     <>
@@ -49,7 +31,6 @@ const Cryptocurrencies = ({ simplified }) => {
       )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (
-          
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
             <Link key={currency.id} to={`/crypto/${currency.id}`}>
               <Card title={`${currency.rank}. ${currency.name}`} extra={<img className="crypto-image" src={currency.iconUrl} />} hoverable>
