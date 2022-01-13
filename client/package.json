@@ -1,6 +1,7 @@
 {
   "name": "cryptoverse",
   "version": "0.1.0",
+  "homepage":"localhost",
   "private": true,
   "dependencies": {
     
