@@ -15,7 +15,6 @@ const Homepage = () => {
   const globalStats = data?.data?.stats;
   console.log("data: "+JSON.stringify(data));
   if (isFetching) return <Loader />;
-  if (!globalStats) return <Loader />;
 
   return (
     <>
