@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "chart.js": "^3.5.1",
     "express": "^4.17.2",
+    "express-favicon": "^2.0.1",
     "html-react-parser": "^1.2.8",
     "millify": "^4.0.0",
     "moment": "^2.29.1",
