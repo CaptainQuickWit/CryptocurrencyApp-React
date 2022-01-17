@@ -17,6 +17,8 @@ const Homepage = () => {
   if (isFetching) return <Loader />;
 
   return (
+    
+    
     <>
       <Title level={2} className="heading">Global Crypto Stats</Title>
       <Row gutter={[32, 32]}>
@@ -38,7 +40,8 @@ const Homepage = () => {
       </div>
       <News simplified />
     </>
-  );
+   
+  );  
 };
 
 export default Homepage;
