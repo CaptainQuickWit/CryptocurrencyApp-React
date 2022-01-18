@@ -20,7 +20,7 @@ const CryptoDetails = () => {
   const cryptoDetails = data?.data?.coin;
 
   if (isFetching) return <Loader />;
-
+  //const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
   //{ title: '24h Volume', value: `$ ${cryptoDetails.volume && millify(cryptoDetails.volume)}`, icon: <ThunderboltOutlined /> },
   const stats = [
@@ -38,7 +38,7 @@ const CryptoDetails = () => {
     //{ title: 'Total Supply', value: `$ ${millify(cryptoDetails.totalSupply)}`, icon: <ExclamationCircleOutlined /> },
     //{ title: 'Circulating Supply', value: `$ ${millify(cryptoDetails.circulatingSupply)}`, icon: <ExclamationCircleOutlined /> },
   ];
-
+  
   return (
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">

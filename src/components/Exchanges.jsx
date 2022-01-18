@@ -9,6 +9,12 @@ import Loader from './Loader';
 const { Text } = Typography;
 const { Panel } = Collapse;
 
+/**
+ * 
+ * NOTE
+ * 
+ * coinrank api v2 no longer includes get exchanges as part of it's free api tier. This page will be suspended and replaced later on
+ */
 const Exchanges = () => {
   const { data, isFetching } = useGetExchangesQuery();
   const exchangesList = data?.data?.exchanges;
